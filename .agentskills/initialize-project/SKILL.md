@@ -36,6 +36,8 @@ Read `/COMPONENTS.md` to understand all 55 available shadcn/ui components.
 
 Key takeaway: **Always use existing shadcn components. Only create custom components if shadcn doesn't have what you need, and ask the user first.**
 
+> **⚠️ Base UI, not Radix UI.** This project's shadcn components are built on `@base-ui/react`, NOT Radix UI. Standard shadcn docs online use Radix — those APIs differ. When you encounter errors, do not apply Radix-based fixes. Use `render` prop instead of `asChild`. Refer to `component-example.tsx` for correct patterns.
+
 ### Step 3: Review Component Patterns
 
 Read `/src/components/component-example.tsx` to see correct component structure patterns.

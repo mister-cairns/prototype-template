@@ -35,13 +35,18 @@ If your tool does NOT support agent skills, follow the rules in this file direct
 ## Architecture
 
 - **Routing**: React Router v7 in [src/App.tsx](src/App.tsx) — add new pages to [src/pages/index.ts](src/pages/index.ts)
-- **Components**: shadcn/ui primitives in `src/components/ui/`, built on `@base-ui/react`
+- **Components**: shadcn/ui primitives in `src/components/ui/`, built on `@base-ui/react` — **NOT Radix UI** (see warning below)
 - **Global Components**: Reusable components in `src/components/global/` (e.g., Header)
 - **Styling**: Tailwind v4 with CSS variables in [src/index.css](src/index.css) — uses OKLch color space
 - **Utils**: `cn()` helper in [src/lib/utils.ts](src/lib/utils.ts) for className merging
 - **Prototype Disclaimer**: A global `PrototypeDisclaimer` component is rendered in `src/App.tsx` to show a persistent question mark on all prototype pages. Do not remove or duplicate it.
 
 ---
+
+> **⚠️ This project uses Base UI (`@base-ui/react`), NOT Radix UI.** Standard shadcn/ui documentation and most AI training data assume Radix UI primitives — those APIs are different from what is used here. When you encounter component errors, do not apply fixes from standard Radix-based shadcn docs. Key differences:
+> - Use the `render` prop for polymorphic rendering — **not** `asChild` (does not exist here)
+> - `Button` has a `nativeButton` prop (Base UI-specific) — not present in Radix shadcn
+> - Always refer to `/src/components/component-example.tsx` for correct usage patterns
 
 ## 1. Component Library — PREFERRED
 

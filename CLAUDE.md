@@ -35,6 +35,12 @@ Help users build prototypes prioritizing our pre-approved shadcn/ui components a
 
 ## Core Guidelines
 
+> [!WARNING]
+> **This project uses Base UI (`@base-ui/react`), NOT Radix UI.** Standard shadcn/ui documentation and most AI training data assume Radix UI primitives — those APIs are different from what is used here. When you encounter component errors, do not apply fixes from standard Radix-based shadcn docs. Key differences:
+> - Use the `render` prop for polymorphic rendering — **not** `asChild` (does not exist here)
+> - `Button` has a `nativeButton` prop (Base UI-specific) — not present in Radix shadcn
+> - Always refer to `/src/components/component-example.tsx` for correct usage patterns
+
 ### 1. Component Library (PREFERRED)
 
 **Prefer components from `/COMPONENTS.md`**
