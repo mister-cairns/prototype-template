@@ -15,7 +15,7 @@ This skill loads all essential project rules, constraints, and patterns to ensur
 
 ## What This Skill Does
 
-1. Confirms you have read the project rules (`.claude.md` or `.cursorrules`)
+1. Confirms you have read the project rules (`/CLAUDE.md` or `/.cursorrules`)
 2. Loads the component inventory from `/COMPONENTS.md`
 3. Reviews component structure patterns from `/src/components/component-example.tsx`
 4. Validates the prototype page structure
@@ -26,7 +26,7 @@ This skill loads all essential project rules, constraints, and patterns to ensur
 ### Step 1: Read Project Rules
 
 Read the appropriate rules file for your AI tool:
-- **Claude Code users**: Read `/.claude.md`
+- **Claude Code users**: Read `/CLAUDE.md`
 - **Cursor users**: Read `/.cursorrules`
 - **Other AI tools**: Read both files
 

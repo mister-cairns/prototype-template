@@ -1,14 +1,16 @@
+> **STOP. Read this entire file before writing any code or responding to this request.**
+
 # Secret Squirrel - AI Coding Instructions
 
 Internal prototyping tool using React 19, TypeScript, Vite, Tailwind CSS 4, and shadcn/ui (base-vega style). Users may not have coding experience.
 
 ---
 
-## 🚨 MANDATORY FIRST STEP — Read Before Doing Anything
+## MANDATORY FIRST STEP — Read Before Doing Anything
 
 **Before responding to ANY user request, you MUST complete these initialization steps:**
 
-1. **Read the project rules** — this file (already loaded), plus `/.claude.md` and `/.cursorrules` for full context
+1. **Read the project rules** — this file (already loaded), plus `/CLAUDE.md` and `/.cursorrules` for full context
 2. **Read `/COMPONENTS.md`** — the complete inventory of 55 available shadcn/ui components
 3. **Read `/src/components/component-example.tsx`** — correct component structure patterns
 4. **Read `/src/index.css`** — the locked color palette (CSS variables only)
@@ -323,7 +325,7 @@ Users may describe what they want in plain language. Translate their requests to
 
 ## Workflow for Every Request
 
-1. **Read project rules** (this file, plus `/.claude.md` and `/.cursorrules` if not already read this session)
+1. **Read project rules** (this file, plus `/CLAUDE.md` and `/.cursorrules` if not already read this session)
 2. **Read `/COMPONENTS.md`** and `/src/components/component-example.tsx`
 3. **Read existing code** if modifying something
 4. **Validate components** against `component-example.tsx` patterns
@@ -374,7 +376,7 @@ Read these before starting work:
 - `/src/index.css` — Theme color definitions (locked, do not modify)
 - `/src/lib/utils.ts` — `cn()` utility function
 - `/.agentskills/` — Agent Skills definitions (for compatible tools)
-- `/.claude.md` — Rules for Claude Code
+- `/CLAUDE.md` — Rules for Claude Code
 - `/.cursorrules` — Rules for Cursor
 
 ## Commands

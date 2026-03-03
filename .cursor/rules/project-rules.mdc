@@ -1,3 +1,8 @@
+---
+description: Secret Squirrel design system rules — always enforced for all files and requests
+alwaysApply: true
+---
+
 > **STOP. Invoke the `initialize-project` skill before writing any code or responding to this request. No exceptions.**
 
 # Secret Squirrel - Internal Prototyping Tool Rules
@@ -231,15 +236,13 @@ const chartConfig = {
 
 **Stacked Bar Charts: Radius on Top Bar Only**
 
-When creating stacked bar charts, apply the top radius only to the topmost Bar component in the stack. The bottom bar should have no radius to ensure a clean connection between stacked segments.
+When creating stacked bar charts, apply the top radius only to the topmost Bar component in the stack.
 
 ```typescript
 // ✅ CORRECT: Top radius on the topmost bar only
 <Bar dataKey="overdue" stackId="a" fill="var(--color-overdue)" radius={[0, 0, 0, 0]} />
 <Bar dataKey="upcoming" stackId="a" fill="var(--color-upcoming)" radius={[4, 4, 0, 0]} />
 ```
-
-Note: When the topmost bar has a value of 0, the rounded corners won't appear on that column. This is a limitation of the current approach.
 
 ### 8. STATE MANAGEMENT
 
@@ -259,8 +262,6 @@ The skill enforces:
 - NEVER build in `home.tsx` (homepage is navigation only)
 - NEVER replace the homepage with prototype content
 - **ALWAYS add a link card to the home page** (`/src/pages/home.tsx`) when creating a new prototype page, following the existing card pattern with icon, title, description, and button
-
-The skill will validate file naming, route configuration, and overall structure before you proceed.
 
 ## NON-CODER FRIENDLY PROMPTING
 
@@ -294,53 +295,6 @@ When a user requests a prototype:
 7. **Use TypeScript** with proper types
 8. **Import with `@` alias**
 9. **Show the user the result** and iterate based on feedback
-
-## EXAMPLES
-
-### ✅ CORRECT: Using shadcn components and color variables
-
-```typescript
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-
-export function UserCard() {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>User Profile</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Button variant="default">Edit Profile</Button>
-      </CardContent>
-    </Card>
-  );
-}
-```
-
-### ❌ INCORRECT: Custom styling and colors
-
-```typescript
-// DON'T DO THIS
-export function UserCard() {
-  return (
-    <div style={{ backgroundColor: "#3B82F6", padding: "20px" }}>
-      <h2 className="text-blue-600">User Profile</h2>
-      <button className="bg-[#10B981] hover:bg-[#059669]">Edit Profile</button>
-    </div>
-  );
-}
-```
-
-The `validate-colors` skill will reject this and provide approved alternatives.
-
-## MAINTENANCE
-
-Before making any changes:
-
-- Read existing component code to understand patterns
-- Use Agent Skills to validate against design system
-- Maintain consistency with existing implementations
-- Ask for clarification if requirements are unclear
 
 ## REFERENCE DOCUMENTATION
 

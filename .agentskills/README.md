@@ -20,7 +20,7 @@ Agent Skills are a standard format for giving AI agents structured capabilities 
 Each skill encapsulates specific validation logic:
 
 ### `initialize-project`
-- Reads `.claude.md` or `.cursorrules`
+- Reads `/CLAUDE.md` or `/.cursorrules`
 - Loads component inventory from `/COMPONENTS.md`
 - Reviews component structure patterns from `/src/components/component-example.tsx`
 - Validates prototype structure
@@ -46,7 +46,7 @@ Each skill encapsulates specific validation logic:
 
 ## What Was Removed from Rules Files
 
-To avoid duplication, the following content was **removed** from `.claude.md` and `.cursorrules` (now handled by skills):
+To avoid duplication, the following content was **removed** from `CLAUDE.md` and `.cursorrules` (now handled by skills):
 
 ### Component Structure Patterns → `validate-component` skill
 - Detailed Sheet, Card, Dialog, Drawer, Tabs structure patterns

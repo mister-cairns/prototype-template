@@ -1,10 +1,13 @@
+> [!IMPORTANT]
+> **STOP. Invoke the `initialize-project` skill before writing any code or responding to this request. No exceptions.**
+
 # Secret Squirrel - AI Assistant Instructions
 
 This is an internal prototyping tool with **design system preferences**. Users may not have coding experience.
 
 ---
 
-## 🚨 MANDATORY FIRST STEP
+## MANDATORY FIRST STEP
 
 **Before responding to ANY user request, invoke the `initialize-project` skill.**
 
@@ -260,7 +263,8 @@ When requests go outside our design system:
 The `initialize-project` skill loads these automatically, but you can reference:
 
 - `/COMPONENTS.md` - Complete component inventory
-- `/.cursorrules` - Detailed project rules
+- `/CLAUDE.md` - These instructions
+- `/.cursorrules` - Detailed project rules (Cursor)
 - `/src/index.css` - Theme color definitions
 - `/src/components/component-example.tsx` - Component patterns
 - `/.agentskills/` - Agent Skills definitions
