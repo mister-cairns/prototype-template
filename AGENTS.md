@@ -145,16 +145,40 @@ import { cn } from "@/lib/utils";
 
 ### 6. Charts — Bar Charts Only
 
-Default to `BarChart` for all data visualizations. Confirm with the user before using any other type.
+**ONLY use `BarChart`. Never use PieChart, LineChart, or AreaChart unless the user explicitly names that chart type in their request.**
 
-- Grouped bar charts: max 2 values per group
-- Stacked bar charts: radius on topmost bar only
-- **Non-negative values only** — bars must never go below the x-axis (y-axis minimum is always 0). If data could be negative, restructure to show only positive figures (e.g. absolute values, or split into separate charts)
+If a user asks for "a chart" or "data visualisation" without specifying a type, always use `BarChart`. Do not infer chart type from the data or context.
+
+| Chart Type  | Rule |
+|---|---|
+| `BarChart`  | **Always use this — the only approved default** |
+| `LineChart` | Only if user explicitly says "line chart" — then ask to confirm |
+| `PieChart`  | Only if user explicitly says "pie chart" — then ask to confirm |
+| `AreaChart` | Only if user explicitly says "area chart" — then ask to confirm |
+
+When a user does explicitly request a different type, ask before proceeding:
+> "Our design system only uses bar charts for consistency. Are you sure you want a [type] chart instead?"
+
+**Grouped bar charts — NEVER more than 2 values per group:**
+
+```tsx
+// ✅ CORRECT — 2 values per group max
+{ month: "Jan", cashIn: 85000, cashOut: 78000 }
+
+// ❌ WRONG — 3 values per group is not allowed
+{ month: "Jan", cashIn: 85000, cashOut: 78000, pending: 12000 }
+```
+
+If more than 2 values are needed: split into multiple charts, use a stacked bar, or prioritise the two most important metrics.
+
+**Stacked bar charts — radius on topmost bar only:**
 
 ```tsx
 <Bar dataKey="overdue" stackId="a" fill="var(--color-overdue)" radius={[0, 0, 0, 0]} />
 <Bar dataKey="upcoming" stackId="a" fill="var(--color-upcoming)" radius={[4, 4, 0, 0]} />
 ```
+
+**Non-negative values only** — bars must never go below the x-axis (y-axis minimum is always 0). If data could be negative, restructure to show only positive figures.
 
 ---
 

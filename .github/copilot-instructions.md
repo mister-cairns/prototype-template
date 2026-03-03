@@ -247,7 +247,7 @@ import { cn } from "@/lib/utils";
 
 - **Always use `BarChart`** — this is the only approved chart type
 - **All chart data must use non-negative values only.** Bars must never go below the x-axis (y-axis minimum is always 0). If data could be negative, restructure it to show only positive figures (e.g. use absolute values, or separate positive and negative into distinct charts)
-- **If user requests a different chart type** → Confirm before proceeding:
+- **Never use PieChart, LineChart, or AreaChart unless the user explicitly names that chart type.** If a user asks for "a chart" or "data visualisation" without specifying a type, always use `BarChart` — do not infer chart type from context or data shape. Only if the user explicitly names a type, ask before proceeding:
   > "Our design system only uses bar charts for consistency. Are you sure you want a [line/pie/area] chart instead?"
 
 | Chart Type  | Usage                                        |
@@ -257,9 +257,9 @@ import { cn } from "@/lib/utils";
 | `PieChart`  | Only when explicitly requested and confirmed |
 | `AreaChart` | Only when explicitly requested and confirmed |
 
-### Grouped Bar Charts: Maximum 2 Values Per Group
+### Grouped Bar Charts: NEVER More Than 2 Values Per Group
 
-Limit grouped charts to 2 values per group for readability. If more are needed:
+**NEVER create a grouped bar chart with more than 2 values per group.** This is a hard limit. If more are needed:
 
 - Split into multiple charts
 - Use a stacked bar chart instead

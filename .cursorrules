@@ -194,7 +194,7 @@ When creating charts:
 
 1. **Always use `BarChart`** - this is the only approved chart type
 2. **All chart data must use non-negative values only.** Bars must never go below the x-axis (y-axis minimum is always 0). If data could be negative, restructure it to show only positive figures (e.g. use absolute values, or separate positive and negative into distinct charts)
-3. **If user explicitly requests a different chart type** → Confirm before proceeding:
+3. **Never use PieChart, LineChart, or AreaChart unless the user explicitly names that chart type.** If a user asks for "a chart" or "data visualisation" without specifying a type, always use `BarChart` — do not infer chart type from context or data shape. Only if the user explicitly names a type, ask before proceeding:
    - "Our design system only uses bar charts for consistency. Are you sure you want a [line/pie/area] chart instead?"
 
 **Available chart types:**
@@ -206,9 +206,9 @@ When creating charts:
 | `PieChart`  | Only when explicitly requested and confirmed |
 | `AreaChart` | Only when explicitly requested and confirmed |
 
-**Grouped Bar Charts: Maximum 2 Values Per Group**
+**Grouped Bar Charts: NEVER More Than 2 Values Per Group**
 
-When creating grouped bar charts (multiple bars per category), limit to a maximum of **2 values per group**. This ensures readability and visual clarity.
+**NEVER create a grouped bar chart with more than 2 values per group.** This is a hard limit.
 
 ```typescript
 // ✅ CORRECT: 2 values per group

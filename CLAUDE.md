@@ -129,16 +129,23 @@ import { Check, ChevronDown, User } from "lucide-react";
 
 When creating charts:
 
-- **Always use `BarChart`** - this is the only approved chart type
+- **Always use `BarChart`** — this is the only approved chart type
 - **All chart data must use non-negative values only.** Bars must never go below the x-axis (y-axis minimum is always 0). If data could be negative, restructure it to show only positive figures (e.g. use absolute values, or separate positive and negative into distinct charts)
-- **If user requests a different chart type** → Confirm before proceeding:
-  - "Our design system only uses bar charts for consistency. Are you sure you want a [line/pie/area] chart instead?"
+- **Never use PieChart, LineChart, or AreaChart unless the user explicitly names that chart type.** If a user asks for "a chart" or "data visualisation" without specifying a type, always use `BarChart` — do not infer chart type from context or data shape.
 
-Available but requires explicit request: `LineChart`, `PieChart`, `AreaChart`
+| Chart Type  | Rule                                                              |
+| ----------- | ----------------------------------------------------------------- |
+| `BarChart`  | **Always use this — the only approved default**                   |
+| `LineChart` | Only if user explicitly says "line chart" — then ask to confirm   |
+| `PieChart`  | Only if user explicitly says "pie chart" — then ask to confirm    |
+| `AreaChart` | Only if user explicitly says "area chart" — then ask to confirm   |
 
-**Grouped Bar Charts: Maximum 2 Values Per Group**
+When a user does explicitly request a different type, ask before proceeding:
+> "Our design system only uses bar charts for consistency. Are you sure you want a [type] chart instead?"
 
-Limit grouped charts to 2 values per group for readability. If more are needed:
+**Grouped Bar Charts: NEVER more than 2 Values Per Group**
+
+**NEVER create a grouped bar chart with more than 2 values per group.** If more are needed:
 
 - Split into multiple charts
 - Use a stacked bar chart instead

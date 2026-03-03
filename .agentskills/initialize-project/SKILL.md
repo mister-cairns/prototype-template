@@ -102,7 +102,7 @@ Ready to assist with prototyping.
 5. **Imports**: Always use `@/components/ui/*` alias
 6. **TypeScript**: All files must be `.tsx` or `.ts`
 7. **Icons**: Only `lucide-react` icons
-8. **Charts**: Default to `BarChart` unless user specifically requests another type
+8. **Charts**: ONLY use `BarChart` by default. Never use PieChart, LineChart, or AreaChart unless the user explicitly names that chart type. Never create grouped bar charts with more than 2 values per group. All chart data must use non-negative values only (y-axis minimum is always 0).
 
 ## When to Re-invoke This Skill
 
