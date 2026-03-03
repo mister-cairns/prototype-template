@@ -21,12 +21,11 @@ Use the initialize-project skill to load project rules
 
 This project uses Agent Skills to enforce design system rules. Invoke these skills as needed:
 
-| Skill                          | When to Use                                                                                  |
-| ------------------------------ | -------------------------------------------------------------------------------------------- |
-| **`initialize-project`**       | **FIRST** - Before any work. Loads all rules and constraints.                                |
-| **`validate-component`**       | Before using any shadcn component. Confirms it exists and returns correct structure pattern. |
-| **`validate-colors`**          | Before implementing colors. Validates against approved CSS variables only.                   |
-| **`validate-prototype-route`** | Before creating/modifying prototype pages. Ensures proper routing structure.                 |
+| Skill                    | When to Use                                                                                  |
+| ------------------------ | -------------------------------------------------------------------------------------------- |
+| **`initialize-project`** | **FIRST** - Before any work. Loads all rules and constraints.                                |
+| **`validate-component`** | Before using any shadcn component. Confirms it exists and returns correct structure pattern. |
+| **`validate-colors`**    | Before implementing colors. Validates against approved CSS variables only.                   |
 
 ---
 
@@ -83,15 +82,13 @@ The color system is **locked and cannot be modified**. Only CSS variable classes
 
 ### 3. Prototype Page Structure
 
-**Before creating prototype pages, invoke the `validate-prototype-route` skill.**
+The home page (`/src/pages/home.tsx`) at the `/` route **is** the prototype canvas — build directly here.
 
 Key rules:
 
-- ALL prototypes start in `/src/pages/prototype.tsx` (renders at `/prototype`)
-- Single-page: Build directly in `prototype.tsx`
-- Multi-page: Use `prototype-*.tsx` prefix and nest routes under `/prototype/*`
-- NEVER build in `home.tsx` (homepage is navigation only)
-- **ALWAYS add a link card to the home page** (`/src/pages/home.tsx`) when creating a new prototype page, following the existing card pattern
+- **Single-page prototypes**: Build directly in `home.tsx`
+- **Multi-page prototypes**: Create additional page files in `src/pages/` with clear descriptive names, export them from `src/pages/index.ts`, and add routes to `src/App.tsx`
+- The `/components` route exists at `/components` but has no navigation link — do not add one
 
 ### 4. Import Conventions
 
@@ -215,7 +212,7 @@ When requests go outside our design system:
 2. **Read existing code** if modifying something
 3. **Use `validate-component`** for components you're about to use
 4. **Use `validate-colors`** before implementing colors
-5. **Use `validate-prototype-route`** before creating pages
+5. **Check `src/App.tsx`** if creating additional pages — add routes as needed
 6. **Follow the patterns** provided by the skills
 7. **Write TypeScript** with proper imports and types
 8. **Explain what you built**
@@ -246,7 +243,7 @@ When requests go outside our design system:
 
 - Skip the `initialize-project` skill on first request
 - Use colors without validating them first
-- Create prototype pages without validating routes
+- Create prototype pages outside of `src/pages/` or forget to add their routes to `App.tsx`
 - Use custom hex/RGB colors or arbitrary Tailwind colors
 - Deviate from component structure patterns
 - Add unnecessary wrapper components

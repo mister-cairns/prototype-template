@@ -13,7 +13,7 @@ Agent Skills are a standard format for giving AI agents structured capabilities 
 | **`initialize-project`** | Mandatory pre-flight check that loads all project rules, design system constraints, and component patterns | **FIRST** - Before any work begins |
 | **`validate-component`** | Validates that a component exists in shadcn/ui and returns the correct structure pattern | Before implementing any UI component |
 | **`validate-colors`** | Validates color usage against the strict approved CSS variable palette | Before implementing any styling with colors |
-| **`validate-prototype-route`** | Validates prototype page structure and routing conventions | Before creating or modifying prototype pages |
+| **`validate-prototype-route`** | Validates prototype page structure — home.tsx is the canvas, additional pages go in src/pages/ | Before creating new prototype pages |
 
 ## How Skills Enforce Rules
 
@@ -39,10 +39,8 @@ Each skill encapsulates specific validation logic:
 - Offers theme alternatives (primary, secondary, accent, muted, destructive)
 
 ### `validate-prototype-route`
-- Ensures all prototypes start in `/src/pages/prototype.tsx`
-- Validates file naming conventions (`prototype-*.tsx`)
-- Checks route configuration in `App.tsx`
-- Prevents building prototype content in `home.tsx`
+- Confirms the home page (`home.tsx` at `/`) is the prototype canvas
+- For multi-page prototypes: validates additional pages are in `src/pages/`, exported from `index.ts`, and routed in `App.tsx`
 
 ## What Was Removed from Rules Files
 
@@ -60,10 +58,9 @@ To avoid duplication, the following content was **removed** from `CLAUDE.md` and
 - User decline templates
 
 ### Prototype Routing → `validate-prototype-route` skill
-- Detailed routing instructions
-- File naming conventions
-- Multi-page prototype setup steps
-- Common mistakes and corrections
+- Routing is simplified: `home.tsx` is the prototype canvas
+- Multi-page setup instructions
+- Route configuration validation
 
 ### What Stayed in Rules Files
 - High-level philosophy and approach

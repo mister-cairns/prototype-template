@@ -14,7 +14,7 @@ Internal prototyping tool using React 19, TypeScript, Vite, Tailwind CSS 4, and 
 2. **Read `/COMPONENTS.md`** — the complete inventory of 55 available shadcn/ui components
 3. **Read `/src/components/component-example.tsx`** — correct component structure patterns
 4. **Read `/src/index.css`** — the locked color palette (CSS variables only)
-5. **Understand prototype structure** — all prototypes live in `prototype.tsx` (see Prototype Page Structure below)
+5. **Understand prototype structure** — all prototypes are built directly in `home.tsx` (see Prototype Page Structure below)
 
 **Do NOT skip this step. Do NOT start writing code until you have read these files.**
 
@@ -26,8 +26,7 @@ This project also has Agent Skills in `/.agentskills/` for Claude Code and Curso
 | ------------------------------ | -------------------------------------------------------------------------------------------- |
 | **`initialize-project`**       | **FIRST** — Before any work. Loads all rules and constraints.                                |
 | **`validate-component`**       | Before using any shadcn component. Confirms it exists and returns correct structure pattern. |
-| **`validate-colors`**          | Before implementing colors. Validates against approved CSS variables only.                   |
-| **`validate-prototype-route`** | Before creating/modifying prototype pages. Ensures proper routing structure.                 |
+| **`validate-colors`**    | Before implementing colors. Validates against approved CSS variables only.                   |
 
 If your tool does NOT support agent skills, follow the rules in this file directly — they contain the same constraints.
 
@@ -174,47 +173,24 @@ Politely decline and offer theme alternatives:
 
 ---
 
-## 3. Prototype Page Structure — STRICT
+## 3. Prototype Page Structure
 
-**ALL prototype content MUST start in `/src/pages/prototype.tsx`** (renders at `/prototype`).
+The home page (`/src/pages/home.tsx`) at the `/` route **is** the prototype canvas — build directly here.
 
 ### Rules:
 
-- **Single-page**: Build directly in `prototype.tsx`
-- **Multi-page**: Use `prototype-*.tsx` prefix and nest routes under `/prototype/*`
-- **NEVER** build prototype content in `home.tsx` (homepage is navigation only)
-- **NEVER** replace the homepage with prototype content
-- **NEVER** create prototype pages without the `prototype-` prefix
-- **NEVER** use routes outside the `/prototype/*` namespace for prototype pages
-- **ALWAYS** add a link card to the home page (`/src/pages/home.tsx`) when creating a new prototype page, following the existing card pattern with icon, title, description, and button
+- **Single-page**: Build directly in `home.tsx`
+- **Multi-page**: Create additional page files in `src/pages/` with clear descriptive names, export them from `src/pages/index.ts`, and add routes to `src/App.tsx`
+- The `/components` route exists at `/components` but has no navigation link — do not add one
 
-### File naming for multi-page prototypes:
-
-```
-/src/pages/
-├── prototype.tsx              ✅ Entry point at /prototype
-├── prototype-details.tsx      ✅ At /prototype/details
-├── prototype-settings.tsx     ✅ At /prototype/settings
-├── details.tsx                ❌ Missing prototype- prefix
-```
-
-### Route configuration:
+### Route configuration for multi-page prototypes:
 
 ```tsx
-// ✅ CORRECT: Routes nested under /prototype
-<Route path="/prototype" element={<PrototypePage />} />
-<Route path="/prototype/details" element={<PrototypeDetailsPage />} />
-
-// ❌ WRONG: Routes outside /prototype namespace
-<Route path="/details" element={<DetailsPage />} />
+// ✅ Add additional routes as needed
+<Route path="/" element={<HomePage />} />
+<Route path="/dashboard" element={<DashboardPage />} />
+<Route path="/settings" element={<SettingsPage />} />
 ```
-
-### Before creating any prototype page:
-
-1. Check if `prototype.tsx` already has content — ask if you should overwrite or extend
-2. Verify routes in `App.tsx` are under `/prototype/*`
-3. Ensure pages are exported from `/src/pages/index.ts`
-4. Add a link card to the home page
 
 ---
 
@@ -331,7 +307,7 @@ Users may describe what they want in plain language. Translate their requests to
 3. **Read existing code** if modifying something
 4. **Validate components** against `component-example.tsx` patterns
 5. **Validate colors** against the approved CSS variable list
-6. **Validate prototype routes** — must use `prototype.tsx` / `prototype-*` naming
+6. **Check `src/App.tsx`** if creating additional pages — add routes as needed
 7. **Write TypeScript** with proper imports and types
 8. **Explain what you built**
 
@@ -351,7 +327,7 @@ Users may describe what they want in plain language. Translate their requests to
 
 - Skip reading project rules on first request
 - Use colors without checking the approved list
-- Create prototype pages outside `prototype.tsx` / `prototype-*` pattern
+- Create prototype pages outside `src/pages/` or forget to add their routes to `App.tsx`
 - Use custom hex/RGB colors or arbitrary Tailwind colors
 - Deviate from component structure patterns in `component-example.tsx`
 - Add ScrollArea inside Sheet/Dialog/Drawer

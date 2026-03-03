@@ -16,12 +16,11 @@ Use the initialize-project skill to load project rules
 
 This project uses Agent Skills to enforce design system rules. Invoke these skills as needed:
 
-| Skill                          | When to Use                                                                                  |
-| ------------------------------ | -------------------------------------------------------------------------------------------- |
-| **`initialize-project`**       | **FIRST** - Before any work. Loads all rules and constraints.                                |
-| **`validate-component`**       | Before using any shadcn component. Confirms it exists and returns correct structure pattern. |
-| **`validate-colors`**          | Before implementing colors. Validates against approved CSS variables only.                   |
-| **`validate-prototype-route`** | Before creating/modifying prototype pages. Ensures proper routing structure.                 |
+| Skill                    | When to Use                                                                                  |
+| ------------------------ | -------------------------------------------------------------------------------------------- |
+| **`initialize-project`** | **FIRST** - Before any work. Loads all rules and constraints.                                |
+| **`validate-component`** | Before using any shadcn component. Confirms it exists and returns correct structure pattern. |
+| **`validate-colors`**    | Before implementing colors. Validates against approved CSS variables only.                   |
 
 Skills are defined in `/.agentskills/` directory.
 
@@ -248,20 +247,13 @@ Note: When the topmost bar has a value of 0, the rounded corners won't appear on
 - For theme toggling, use `next-themes` (already installed)
 - Ask before adding Redux, Zustand, or other state libraries
 
-## PROTOTYPE PAGE STRUCTURE - STRICT
+## PROTOTYPE PAGE STRUCTURE
 
-**CRITICAL: Invoke `validate-prototype-route` skill before creating/modifying prototype pages.**
+The home page (`/src/pages/home.tsx`) at the `/` route **is** the prototype canvas — build directly here.
 
-The skill enforces:
-
-- ALL prototype content starts in `/src/pages/prototype.tsx` (renders at `/prototype`)
-- Single-page prototypes: Build directly in `prototype.tsx`
-- Multi-page prototypes: Use `prototype-*` prefix and nest routes under `/prototype/*`
-- NEVER build in `home.tsx` (homepage is navigation only)
-- NEVER replace the homepage with prototype content
-- **ALWAYS add a link card to the home page** (`/src/pages/home.tsx`) when creating a new prototype page, following the existing card pattern with icon, title, description, and button
-
-The skill will validate file naming, route configuration, and overall structure before you proceed.
+- **Single-page prototypes**: Build directly in `home.tsx`
+- **Multi-page prototypes**: Create additional page files in `src/pages/` with clear descriptive names, export them from `src/pages/index.ts`, and add routes to `src/App.tsx`
+- The `/components` route exists at `/components` but has no navigation link — do not add one
 
 ## NON-CODER FRIENDLY PROMPTING
 

@@ -48,11 +48,11 @@ Critical patterns to remember:
 
 ### Step 4: Understand Prototype Structure
 
-All prototypes MUST start in `/src/pages/prototype.tsx` (rendered at `/prototype` route).
+The home page (`/src/pages/home.tsx`) at the `/` route **is** the prototype canvas.
 
-- Single-page prototypes: Build directly in `prototype.tsx`
-- Multi-page prototypes: Create `prototype-*.tsx` files and add nested routes under `/prototype`
-- **NEVER** build prototype content in `home.tsx`
+- Single-page prototypes: Build directly in `home.tsx`
+- Multi-page prototypes: Create additional page files in `src/pages/` with clear descriptive names, export them from `src/pages/index.ts`, and add routes to `src/App.tsx`
+- The `/components` route exists but has no navigation link — do not add one
 
 ### Step 5: Load Color System
 

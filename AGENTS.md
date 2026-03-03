@@ -99,35 +99,23 @@ style={{ color: 'pink' }}
 
 ---
 
-### 3. Prototype Page Structure — Strict
+### 3. Prototype Page Structure
 
-All prototype content MUST start in `/src/pages/prototype.tsx` (renders at `/prototype`).
+The home page (`/src/pages/home.tsx`) at the `/` route **is** the prototype canvas — build directly here.
 
 | Rule | Detail |
 |---|---|
-| Single-page | Build directly in `prototype.tsx` |
-| Multi-page | Use `prototype-*.tsx` prefix, nest routes under `/prototype/*` |
-| NEVER | Build in `home.tsx` — it is navigation only |
-| ALWAYS | Add a link card to `home.tsx` when creating a new prototype page |
+| Single-page | Build directly in `home.tsx` |
+| Multi-page | Create additional page files in `src/pages/`, export from `index.ts`, add routes to `App.tsx` |
+| Components | `/components` route exists but has no nav link — do not add one |
 
-**File naming:**
-
-```
-src/pages/
-├── prototype.tsx           ✅ Entry at /prototype
-├── prototype-details.tsx   ✅ At /prototype/details
-├── details.tsx             ❌ Missing prototype- prefix
-```
-
-**Route config:**
+**Route config for multi-page prototypes:**
 
 ```tsx
-// ✅ Correct
-<Route path="/prototype" element={<PrototypePage />} />
-<Route path="/prototype/details" element={<PrototypeDetailsPage />} />
-
-// ❌ Wrong
-<Route path="/details" element={<DetailsPage />} />
+// ✅ Add routes as needed
+<Route path="/" element={<HomePage />} />
+<Route path="/dashboard" element={<DashboardPage />} />
+<Route path="/settings" element={<SettingsPage />} />
 ```
 
 ---
@@ -176,7 +164,7 @@ Default to `BarChart` for all data visualizations. Confirm with the user before 
 2. Read existing code before modifying anything
 3. Validate components against `component-example.tsx` patterns
 4. Validate colors against the approved CSS variable list
-5. Validate prototype routes — must use `prototype.tsx` / `prototype-*` naming
+5. Check `src/App.tsx` if creating additional pages — add routes as needed
 6. Write TypeScript with proper imports and types
 7. Explain what you built
 
@@ -186,7 +174,7 @@ Default to `BarChart` for all data visualizations. Confirm with the user before 
 
 **Always:** TypeScript interfaces, `@` alias imports, CSS variable colors, validated component patterns
 
-**Never:** Custom hex/RGB colors, arbitrary Tailwind colors, prototype pages outside `prototype-*` pattern, ScrollArea inside Sheet/Dialog/Drawer, modifying `/src/index.css`
+**Never:** Custom hex/RGB colors, arbitrary Tailwind colors, ScrollArea inside Sheet/Dialog/Drawer, modifying `/src/index.css`
 
 **Ask before:** External UI libraries, custom components, non-BarChart types, state libraries
 
