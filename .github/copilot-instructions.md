@@ -359,9 +359,17 @@ Read these before starting work:
 ## Commands
 
 ```bash
-pnpm dev      # Start dev server
-pnpm build    # Type-check + build
-pnpm lint     # ESLint
+# Install dependencies (use your preferred package manager)
+pnpm install  # or: npm install / yarn install / bun install
+
+# Start dev server
+pnpm dev      # or: npm run dev / yarn dev / bun dev
+
+# Type-check + build
+pnpm build    # or: npm run build / yarn build / bun build
+
+# Lint
+pnpm lint     # or: npm run lint / yarn lint / bun lint
 ```
 
 ---
