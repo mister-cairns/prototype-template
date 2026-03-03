@@ -2,7 +2,7 @@
 name: validate-prototype-route
 description: Validates prototype page structure. The home page is the prototype canvas — confirm content goes in home.tsx, and that any additional pages are properly routed. Use before creating new prototype pages.
 metadata:
-  author: secret-squirrel
+  author: prototype-template
   version: "2.0"
 allowed-tools: Read Glob
 ---

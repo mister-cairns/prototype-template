@@ -2,7 +2,7 @@
 name: initialize-project
 description: Mandatory pre-flight check that reads all project rules, design system constraints, and component patterns before beginning any work. Use this FIRST before responding to any user request.
 metadata:
-  author: secret-squirrel
+  author: prototype-template
   version: "1.0"
 allowed-tools: Read
 ---

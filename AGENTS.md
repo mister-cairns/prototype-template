@@ -1,6 +1,6 @@
 > **STOP. Read this entire file before writing any code or responding to this request.**
 
-# Secret Squirrel - AI Agent Instructions
+# Prototype Template - AI Agent Instructions
 
 Internal prototyping tool using React 19, TypeScript, Vite, Tailwind CSS 4, and shadcn/ui. Users may not have coding experience.
 

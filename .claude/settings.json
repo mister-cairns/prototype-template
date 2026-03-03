@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'RULE ENFORCEMENT: This is the Secret Squirrel prototyping project. You MUST invoke the initialize-project skill before writing any code or responding to this request. Do not skip this step.'"
+            "command": "echo 'RULE ENFORCEMENT: This is the Prototype Template prototyping project. You MUST invoke the initialize-project skill before writing any code or responding to this request. Do not skip this step.'"
           }
         ]
       }

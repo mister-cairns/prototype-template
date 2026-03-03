@@ -1,6 +1,6 @@
-# Agent Skills for Secret Squirrel
+# Agent Skills for Prototype Template
 
-This directory contains [Agent Skills](https://agentskills.io) that enforce the Secret Squirrel design system rules.
+This directory contains [Agent Skills](https://agentskills.io) that enforce the Prototype Template design system rules.
 
 ## What are Agent Skills?
 
@@ -80,7 +80,7 @@ Each skill is a directory containing a `SKILL.md` file with:
    name: skill-name
    description: What the skill does and when to use it
    metadata:
-     author: secret-squirrel
+     author: prototype-template
      version: "1.0"
    allowed-tools: Read Grep
    ---

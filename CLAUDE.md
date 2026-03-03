@@ -1,7 +1,7 @@
 > [!IMPORTANT]
 > **STOP. Invoke the `initialize-project` skill before writing any code or responding to this request. No exceptions.**
 
-# Secret Squirrel - AI Assistant Instructions
+# Prototype Template - AI Assistant Instructions
 
 This is an internal prototyping tool with **design system preferences**. Users may not have coding experience.
 

@@ -2,14 +2,14 @@
 name: validate-colors
 description: Validates color usage against the strict approved CSS variable palette. Rejects hex, RGB, named colors, and arbitrary Tailwind colors. Use before implementing any styling with colors.
 metadata:
-  author: secret-squirrel
+  author: prototype-template
   version: "1.0"
 allowed-tools: Read
 ---
 
 # Validate Colors
 
-This skill enforces the **strict, locked color system** for Secret Squirrel prototypes.
+This skill enforces the **strict, locked color system** for Prototype Template prototypes.
 
 ## When to Use This Skill
 

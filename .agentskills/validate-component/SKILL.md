@@ -2,7 +2,7 @@
 name: validate-component
 description: Validates that a component exists in the shadcn/ui library and returns the correct structure pattern. Use this before implementing any UI component to ensure proper usage.
 metadata:
-  author: secret-squirrel
+  author: prototype-template
   version: "1.0"
 allowed-tools: Read Grep
 ---
