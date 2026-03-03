@@ -270,6 +270,7 @@ import { cn } from "@/lib/utils";
 **ONLY use `BarChart` for all data visualizations. Never use other chart types without explicit user request.**
 
 - **Always use `BarChart`** — this is the only approved chart type
+- **All chart data must use non-negative values only.** Bars must never go below the x-axis (y-axis minimum is always 0). If data could be negative, restructure it to show only positive figures (e.g. use absolute values, or separate positive and negative into distinct charts)
 - **If user requests a different chart type** → Confirm before proceeding:
   > "Our design system only uses bar charts for consistency. Are you sure you want a [line/pie/area] chart instead?"
 

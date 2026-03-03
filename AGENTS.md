@@ -161,6 +161,7 @@ Default to `BarChart` for all data visualizations. Confirm with the user before 
 
 - Grouped bar charts: max 2 values per group
 - Stacked bar charts: radius on topmost bar only
+- **Non-negative values only** — bars must never go below the x-axis (y-axis minimum is always 0). If data could be negative, restructure to show only positive figures (e.g. absolute values, or split into separate charts)
 
 ```tsx
 <Bar dataKey="overdue" stackId="a" fill="var(--color-overdue)" radius={[0, 0, 0, 0]} />
