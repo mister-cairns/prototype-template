@@ -60,7 +60,7 @@ The `/src/components/global/` folder contains reusable custom components:
 
 - **Header** (`@/components/global/header`): Use for product headers and navigation bars. When a user requests a "header", "nav bar", or "product navigation", use this component by default.
   - **CRITICAL**: The Header component is driven by a JSON configuration file at `src/config/header.json`.
-  - When a user asks to change the logo, title, or navigation items in the header, **edit `src/config/header.json`** instead of passing props to the `<Header />` component.
+  - When a user asks to change the title or navigation items in the header, **edit `src/config/header.json`** instead of passing props to the `<Header />` component.
   - This prevents hallucinations and keeps the component code clean.
 - **Prototype Disclaimer** (`@/components/global/prototype-disclaimer`): A global component rendered in `src/App.tsx` to show a persistent question mark on all prototype pages. Do not remove or duplicate it.
 

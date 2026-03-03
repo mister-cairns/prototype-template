@@ -15,8 +15,6 @@ interface NavItem {
 interface HeaderProps {
   /** Optional title to override the config title */
   title?: string;
-  /** Optional logo to override the config logo */
-  logo?: string;
   /** Optional navigation items to override the config navItems */
   navItems?: NavItem[];
   /** Optional className for additional styling */
@@ -48,13 +46,11 @@ interface HeaderProps {
  */
 export function Header({
   title,
-  logo,
   navItems,
   className,
   children,
 }: HeaderProps) {
   const displayTitle = title ?? headerConfig.title;
-  const displayLogo = logo ?? headerConfig.logo;
   const displayNavItems = navItems ?? headerConfig.navItems;
 
   return (
@@ -68,9 +64,6 @@ export function Header({
     >
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-4">
-          <Link to="/" className="hover:opacity-80 transition-opacity">
-            <span className="text-xl">{displayLogo}</span>
-          </Link>
           <h1 className="text-lg font-semibold">{displayTitle}</h1>
         </div>
         {displayNavItems && displayNavItems.length > 0 && (

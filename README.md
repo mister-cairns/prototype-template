@@ -51,7 +51,7 @@ src/
 │   ├── ui/               # shadcn/ui components
 │   └── global/           # Shared components (Header, PrototypeDisclaimer)
 ├── config/
-│   └── header.json       # Header logo, title, and nav config
+│   └── header.json       # Header title and nav config
 └── index.css             # Theme and color system (do not modify)
 ```
 

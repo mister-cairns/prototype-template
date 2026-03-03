@@ -227,7 +227,7 @@ When requests go outside our design system:
 
 ## Component Selection Guide
 
-**Header/Navigation**: Use `Header` component from `@/components/global/header` for product headers and nav bars. **CRITICAL**: Edit `src/config/header.json` to change the logo, title, or nav items instead of passing props.
+**Header/Navigation**: Use `Header` component from `@/components/global/header` for product headers and nav bars. **CRITICAL**: Edit `src/config/header.json` to change the title or nav items instead of passing props.
 **Prototype Disclaimer**: A global `PrototypeDisclaimer` component is rendered in `src/App.tsx` to show a persistent question mark on all prototype pages. Do not remove or duplicate it.
 **Forms**: Field, Input, Label, Button, Checkbox, Select
 **Layout**: Card, Tabs, Sheet, Sidebar, Separator

@@ -61,7 +61,7 @@ Read `/src/components/component-example.tsx` for the correct structure pattern b
 
 **Global components:**
 
-- **Header** (`@/components/global/header`): Edit `src/config/header.json` to change logo, title, or nav — do NOT pass props directly
+- **Header** (`@/components/global/header`): Edit `src/config/header.json` to change the title or nav items — do NOT pass props directly
 - **PrototypeDisclaimer**: Rendered globally in `App.tsx` — do not remove or duplicate
 
 **When shadcn doesn't have what you need:** Ask the user for approval before creating a custom component.

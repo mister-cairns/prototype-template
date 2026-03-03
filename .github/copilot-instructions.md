@@ -92,7 +92,7 @@ When using the `Button` component with the `render` prop to render a non-button 
 
 ### Global Components
 
-- **Header** (`@/components/global/header`): Use for product headers and navigation bars. **CRITICAL**: Edit `src/config/header.json` to change the logo, title, or nav items — do NOT pass props to override.
+- **Header** (`@/components/global/header`): Use for product headers and navigation bars. **CRITICAL**: Edit `src/config/header.json` to change the title or nav items — do NOT pass props to override.
 - **Prototype Disclaimer** (`@/components/global/prototype-disclaimer`): Rendered globally in `App.tsx`. Do not remove or duplicate.
 
 ```tsx
