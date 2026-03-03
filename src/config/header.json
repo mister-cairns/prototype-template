@@ -1,0 +1,15 @@
+{
+  "logo": "🐿️",
+  "title": "Financial Dashboard",
+  "navItems": [
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "Dashboard",
+      "href": "/dashboard",
+      "active": true
+    }
+  ]
+}

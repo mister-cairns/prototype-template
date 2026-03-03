@@ -1,0 +1,112 @@
+---
+name: initialize-project
+description: Mandatory pre-flight check that reads all project rules, design system constraints, and component patterns before beginning any work. Use this FIRST before responding to any user request.
+metadata:
+  author: secret-squirrel
+  version: "1.0"
+allowed-tools: Read
+---
+
+# Initialize Project
+
+**⚠️ CRITICAL: This skill MUST be invoked before responding to any user request.**
+
+This skill loads all essential project rules, constraints, and patterns to ensure you understand the design system and coding conventions.
+
+## What This Skill Does
+
+1. Confirms you have read the project rules (`.claude.md` or `.cursorrules`)
+2. Loads the component inventory from `/COMPONENTS.md`
+3. Reviews component structure patterns from `/src/components/component-example.tsx`
+4. Validates the prototype page structure
+5. Returns a summary of key constraints
+
+## Instructions
+
+### Step 1: Read Project Rules
+
+Read the appropriate rules file for your AI tool:
+- **Claude Code users**: Read `/.claude.md`
+- **Cursor users**: Read `/.cursorrules`
+- **Other AI tools**: Read both files
+
+### Step 2: Load Component Inventory
+
+Read `/COMPONENTS.md` to understand all 55 available shadcn/ui components.
+
+Key takeaway: **Always use existing shadcn components. Only create custom components if shadcn doesn't have what you need, and ask the user first.**
+
+### Step 3: Review Component Patterns
+
+Read `/src/components/component-example.tsx` to see correct component structure patterns.
+
+Critical patterns to remember:
+- **Sheet**: `SheetHeader` → content div with `p-4` → `SheetFooter` (NO ScrollArea)
+- **Card**: `CardHeader` → `CardContent` → `CardFooter`
+- **Dialog**: `DialogHeader` → content → `DialogFooter`
+- **Tabs**: `TabsList` with `TabsTrigger` → `TabsContent` for each tab
+
+### Step 4: Understand Prototype Structure
+
+All prototypes MUST start in `/src/pages/prototype.tsx` (rendered at `/prototype` route).
+
+- Single-page prototypes: Build directly in `prototype.tsx`
+- Multi-page prototypes: Create `prototype-*.tsx` files and add nested routes under `/prototype`
+- **NEVER** build prototype content in `home.tsx`
+
+### Step 5: Load Color System
+
+The project uses a **strict, locked color palette** defined in `/src/index.css`.
+
+**Available color classes** (use ONLY these):
+- `bg-background`, `text-foreground`
+- `bg-primary`, `text-primary-foreground`
+- `bg-secondary`, `text-secondary-foreground`
+- `bg-accent`, `text-accent-foreground`
+- `bg-muted`, `text-muted-foreground`
+- `bg-destructive`, `text-destructive-foreground`
+- `border-border`, `ring-ring`
+- `bg-card`, `text-card-foreground`
+- `bg-popover`, `text-popover-foreground`
+
+**NEVER use**:
+- Hex colors (`#3B82F6`)
+- RGB values (`rgb(59, 130, 246)`)
+- Named colors (`blue`, `red`)
+- Arbitrary Tailwind colors (`bg-blue-500`)
+- **NEVER modify `/src/index.css`**
+
+When users request custom colors, politely decline and offer theme alternatives.
+
+## Output Format
+
+After completing these steps, confirm you've loaded the rules by outputting:
+
+```
+✅ Project initialized
+- Read project rules
+- Loaded 55 shadcn/ui components from /COMPONENTS.md
+- Reviewed component structure patterns
+- Confirmed prototype structure (starts in prototype.tsx)
+- Loaded strict color system (CSS variables only)
+
+Ready to assist with prototyping.
+```
+
+## Key Constraints to Remember
+
+1. **Components**: Prefer shadcn/ui components; ask before creating custom ones
+2. **Colors**: Use CSS variables only; never modify theme colors; decline custom color requests
+3. **Prototype pages**: Start in `prototype.tsx`; use `prototype-*` prefix for additional pages
+4. **Component structure**: Check `component-example.tsx` before using any component
+5. **Imports**: Always use `@/components/ui/*` alias
+6. **TypeScript**: All files must be `.tsx` or `.ts`
+7. **Icons**: Only `lucide-react` icons
+8. **Charts**: Default to `BarChart` unless user specifically requests another type
+
+## When to Re-invoke This Skill
+
+Invoke this skill again if:
+- You've forgotten key constraints
+- The user asks you to "reload the rules"
+- You need to confirm the design system requirements
