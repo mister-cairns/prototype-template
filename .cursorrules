@@ -75,7 +75,7 @@ import { Header } from "@/components/global/header";
 
 **Button Component:**
 
-When using the `Button` component with the `render` prop to render a non-button element (like a `<Link>` or `<a>` tag), you **MUST** include the `nativeButton={false}` prop to prevent Base UI accessibility errors.
+When using the `Button` component with the `render` prop to render a non-button element (like a `<Link>` or `<a>` tag), you **MUST** include the `nativeButton={false}` prop to prevent Base UI accessibility errors. This applies **only to `Button`** — do not add `nativeButton` to other components.
 
 ```typescript
 // ✅ CORRECT
@@ -83,6 +83,21 @@ When using the `Button` component with the `render` prop to render a non-button 
 
 // ❌ INCORRECT (will throw Base UI error)
 <Button render={<Link to="/path" />}>Link</Button>
+```
+
+**DropdownMenuTrigger:**
+Use the `render` prop to set the trigger element. Do NOT add `nativeButton` to `DropdownMenuTrigger`.
+
+```typescript
+// ✅ CORRECT
+<DropdownMenuTrigger render={<Button variant="ghost" size="icon" />}>
+  <MoreVerticalIcon />
+</DropdownMenuTrigger>
+
+// ❌ WRONG — nativeButton does not belong on DropdownMenuTrigger
+<DropdownMenuTrigger nativeButton={false}>
+  <Button>Open</Button>
+</DropdownMenuTrigger>
 ```
 
 ### 2. COLOR SCHEME - STRICT
@@ -241,6 +256,27 @@ When creating stacked bar charts, apply the top radius only to the topmost Bar c
 ```
 
 Note: When the topmost bar has a value of 0, the rounded corners won't appear on that column. This is a limitation of the current approach.
+
+**Chart Container: Always Use `ChartContainer`**
+
+Always wrap `BarChart` in `ChartContainer` from `@/components/ui/chart` with an explicit pixel height. Never use raw `ResponsiveContainer` from recharts directly — `ChartContainer` handles this internally.
+
+```typescript
+// ✅ CORRECT
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart";
+
+<ChartContainer config={chartConfig} className="h-[300px] w-full">
+  <BarChart data={data} accessibilityLayer>
+    ...
+  </BarChart>
+</ChartContainer>
+
+// ❌ WRONG — causes width/height errors and bypasses the design system
+import { ResponsiveContainer } from "recharts";
+<ResponsiveContainer width="100%" height={300}>
+  <BarChart data={data}>...</BarChart>
+</ResponsiveContainer>
+```
 
 ### 8. STATE MANAGEMENT
 

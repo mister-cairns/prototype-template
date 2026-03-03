@@ -54,11 +54,26 @@ We have 55 shadcn/ui components available. These should be your first choice for
 3. If approved, build it following our color system and styling patterns
 
 **Button Component:**
-When using the `Button` component with the `render` prop to render a non-button element (like a `<Link>` or `<a>` tag), you **MUST** include the `nativeButton={false}` prop to prevent Base UI accessibility errors.
+When using the `Button` component with the `render` prop to render a non-button element (like a `<Link>` or `<a>` tag), you **MUST** include the `nativeButton={false}` prop to prevent Base UI accessibility errors. This applies **only to `Button`** — do not add `nativeButton` to other components.
 
 ```typescript
 // ✅ CORRECT
 <Button render={<Link to="/path" />} nativeButton={false}>Link</Button>
+```
+
+**DropdownMenuTrigger:**
+Use the `render` prop to set the trigger element. Do NOT add `nativeButton` to `DropdownMenuTrigger`.
+
+```typescript
+// ✅ CORRECT
+<DropdownMenuTrigger render={<Button variant="ghost" size="icon" />}>
+  <MoreVerticalIcon />
+</DropdownMenuTrigger>
+
+// ❌ WRONG — nativeButton does not belong on DropdownMenuTrigger
+<DropdownMenuTrigger nativeButton={false}>
+  <Button>Open</Button>
+</DropdownMenuTrigger>
 ```
 
 ### 2. Color System (STRICT - NO MODIFICATIONS)
@@ -158,6 +173,27 @@ When a user does explicitly request a different type, ask before proceeding:
 // ✅ CORRECT: Top radius on topmost bar only
 <Bar dataKey="overdue" stackId="a" fill="var(--color-overdue)" radius={[0, 0, 0, 0]} />
 <Bar dataKey="upcoming" stackId="a" fill="var(--color-upcoming)" radius={[4, 4, 0, 0]} />
+```
+
+**Chart Container: Always Use `ChartContainer`**
+
+Always wrap `BarChart` in `ChartContainer` from `@/components/ui/chart` with an explicit pixel height. Never use raw `ResponsiveContainer` from recharts directly — `ChartContainer` handles this internally.
+
+```typescript
+// ✅ CORRECT
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart";
+
+<ChartContainer config={chartConfig} className="h-[300px] w-full">
+  <BarChart data={data} accessibilityLayer>
+    ...
+  </BarChart>
+</ChartContainer>
+
+// ❌ WRONG — causes width/height errors and bypasses the design system
+import { ResponsiveContainer } from "recharts";
+<ResponsiveContainer width="100%" height={300}>
+  <BarChart data={data}>...</BarChart>
+</ResponsiveContainer>
 ```
 
 ### 8. Styling Guidelines

@@ -52,11 +52,20 @@ Read `/src/components/component-example.tsx` for the correct structure pattern b
 // Tabs: TabsList with TabsTrigger → TabsContent per tab
 ```
 
-**Button with render prop** — always include `nativeButton={false}`:
+**Button with render prop** — always include `nativeButton={false}` when the render element is not a `<button>`. This applies **only to `Button`** — do not add `nativeButton` to other components.
 
 ```tsx
 // ✅ CORRECT
 <Button render={<Link to="/path" />} nativeButton={false}>Link</Button>
+```
+
+**DropdownMenuTrigger** — use the `render` prop to set the trigger element. Do NOT add `nativeButton` to `DropdownMenuTrigger`.
+
+```tsx
+// ✅ CORRECT
+<DropdownMenuTrigger render={<Button variant="ghost" size="icon" />}>
+  <MoreVerticalIcon />
+</DropdownMenuTrigger>
 ```
 
 **Global components:**
@@ -176,6 +185,24 @@ If more than 2 values are needed: split into multiple charts, use a stacked bar,
 ```tsx
 <Bar dataKey="overdue" stackId="a" fill="var(--color-overdue)" radius={[0, 0, 0, 0]} />
 <Bar dataKey="upcoming" stackId="a" fill="var(--color-upcoming)" radius={[4, 4, 0, 0]} />
+```
+
+**Chart container — always use `ChartContainer`:**
+
+Always wrap `BarChart` in `ChartContainer` from `@/components/ui/chart` with an explicit pixel height. Never use raw `ResponsiveContainer` — `ChartContainer` handles this internally.
+
+```tsx
+// ✅ CORRECT
+<ChartContainer config={chartConfig} className="h-[300px] w-full">
+  <BarChart data={data} accessibilityLayer>
+    ...
+  </BarChart>
+</ChartContainer>
+
+// ❌ WRONG — causes width/height errors
+<ResponsiveContainer width="100%" height={300}>
+  <BarChart data={data}>...</BarChart>
+</ResponsiveContainer>
 ```
 
 **Vertical bars only** — never use `layout="vertical"` on a BarChart. This produces a horizontal bar chart, which is not permitted.
