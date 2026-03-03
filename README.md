@@ -68,5 +68,5 @@ pnpm preview   # Preview production build locally
 
 - **Components**: 55 shadcn/ui components — see `/components` in the browser for the full list
 - **Colors**: Locked CSS variable palette — the AI will not introduce custom colours
-- **Icons**: lucide-react only
-- **Charts**: BarChart by default, non-negative values only
+- **Icons**: lucide-react by default
+- **Charts**: BarChart by default
