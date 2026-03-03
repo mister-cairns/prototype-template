@@ -130,6 +130,7 @@ import { Check, ChevronDown, User } from "lucide-react";
 When creating charts:
 
 - **Always use `BarChart`** — this is the only approved chart type
+- **Bars must always be vertical. Never use `layout="vertical"` on a BarChart** — this produces a horizontal bar chart, which is not permitted
 - **All chart data must use non-negative values only.** Bars must never go below the x-axis (y-axis minimum is always 0). If data could be negative, restructure it to show only positive figures (e.g. use absolute values, or separate positive and negative into distinct charts)
 - **Never use PieChart, LineChart, or AreaChart unless the user explicitly names that chart type.** If a user asks for "a chart" or "data visualisation" without specifying a type, always use `BarChart` — do not infer chart type from context or data shape.
 

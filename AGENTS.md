@@ -178,6 +178,8 @@ If more than 2 values are needed: split into multiple charts, use a stacked bar,
 <Bar dataKey="upcoming" stackId="a" fill="var(--color-upcoming)" radius={[4, 4, 0, 0]} />
 ```
 
+**Vertical bars only** — never use `layout="vertical"` on a BarChart. This produces a horizontal bar chart, which is not permitted.
+
 **Non-negative values only** — bars must never go below the x-axis (y-axis minimum is always 0). If data could be negative, restructure to show only positive figures.
 
 ---
