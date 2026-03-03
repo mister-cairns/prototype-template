@@ -52,8 +52,9 @@ Critical patterns to remember:
 
 The home page (`/src/pages/home.tsx`) at the `/` route **is** the prototype canvas.
 
-- Single-page prototypes: Build directly in `home.tsx`
-- Multi-page prototypes: Create additional page files in `src/pages/` with clear descriptive names, export them from `src/pages/index.ts`, and add routes to `src/App.tsx`
+- **Single-page by default**: Build directly in `home.tsx`. This includes multi-step flows, wizards, onboarding sequences, and tabbed interfaces — even if the prototype has many steps or panels, it is single-page if users don't navigate to a different URL.
+- **Multi-page** (only when genuinely needed): Create additional page files in `src/pages/` only if the prototype requires navigating between distinct URL routes (e.g., `/dashboard`, `/settings`). Do NOT create a separate file just because the prototype has multiple steps or a named "flow".
+- Export additional pages from `src/pages/index.ts` and add routes to `src/App.tsx`
 - The `/components` route exists but has no navigation link — do not add one
 
 ### Step 5: Load Color System
@@ -89,7 +90,7 @@ After completing these steps, confirm you've loaded the rules by outputting:
 - Read project rules
 - Loaded 55 shadcn/ui components from /COMPONENTS.md
 - Reviewed component structure patterns
-- Confirmed prototype structure (starts in prototype.tsx)
+- Confirmed prototype structure (starts in home.tsx)
 - Loaded strict color system (CSS variables only)
 
 Ready to assist with prototyping.
@@ -99,7 +100,7 @@ Ready to assist with prototyping.
 
 1. **Components**: Prefer shadcn/ui components; ask before creating custom ones
 2. **Colors**: Use CSS variables only; never modify theme colors; decline custom color requests
-3. **Prototype pages**: Start in `prototype.tsx`; use `prototype-*` prefix for additional pages
+3. **Prototype pages**: Always start in `home.tsx` — this includes multi-step flows, wizards, and onboarding sequences. Only create additional page files for distinct URL routes (e.g. `/dashboard`, `/settings`)
 4. **Component structure**: Check `component-example.tsx` before using any component
 5. **Imports**: Always use `@/components/ui/*` alias
 6. **TypeScript**: All files must be `.tsx` or `.ts`

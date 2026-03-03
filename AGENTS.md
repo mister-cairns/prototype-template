@@ -119,8 +119,8 @@ The home page (`/src/pages/home.tsx`) at the `/` route **is** the prototype canv
 
 | Rule | Detail |
 |---|---|
-| Single-page | Build directly in `home.tsx` |
-| Multi-page | Create additional page files in `src/pages/`, export from `index.ts`, add routes to `App.tsx` |
+| Single-page by default | Build directly in `home.tsx` — this includes multi-step flows, wizards, and onboarding sequences. Even if the prototype has many steps or panels, it is single-page if users don't navigate to a different URL. |
+| Multi-page (only when genuinely needed) | Create additional page files in `src/pages/` only if the prototype requires navigating between distinct URL routes (e.g. `/dashboard`, `/settings`). Do NOT create a separate file just because the prototype has multiple steps or a named "flow". Export new pages from `src/pages/index.ts` and add routes to `App.tsx`. |
 | Components | `/components` route exists but has no nav link — do not add one |
 
 **Route config for multi-page prototypes:**
