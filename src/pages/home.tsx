@@ -32,12 +32,14 @@ interface FeatureItemProps {
 function FeatureItem({ icon, title, description }: FeatureItemProps) {
   return (
     <div className="flex gap-4">
-      <div className="bg-secondary text-secondary-foreground flex size-10 shrink-0 items-center justify-center">
+      <div className="bg-primary-foreground/10 text-primary-foreground flex size-10 shrink-0 items-center justify-center">
         {icon}
       </div>
       <div className="flex flex-col gap-1">
-        <h3 className="text-sm font-medium text-foreground">{title}</h3>
-        <p className="text-muted-foreground text-sm leading-relaxed">
+        <h3 className="text-sm font-medium text-primary-foreground">
+          {title}
+        </h3>
+        <p className="text-primary-foreground/70 text-sm leading-relaxed">
           {description}
         </p>
       </div>
