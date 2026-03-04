@@ -37,6 +37,7 @@ Help users build prototypes prioritizing our pre-approved shadcn/ui components a
 
 > [!WARNING]
 > **This project uses Base UI (`@base-ui/react`), NOT Radix UI.** Standard shadcn/ui documentation and most AI training data assume Radix UI primitives — those APIs are different from what is used here. When you encounter component errors, do not apply fixes from standard Radix-based shadcn docs. Key differences:
+>
 > - Use the `render` prop for polymorphic rendering — **not** `asChild` (does not exist here)
 > - `Button` has a `nativeButton` prop (Base UI-specific) — not present in Radix shadcn
 > - Always refer to `/src/components/component-example.tsx` for correct usage patterns
@@ -155,14 +156,15 @@ When creating charts:
 - **All chart data must use non-negative values only.** Bars must never go below the x-axis (y-axis minimum is always 0). If data could be negative, restructure it to show only positive figures (e.g. use absolute values, or separate positive and negative into distinct charts)
 - **Never use PieChart, LineChart, or AreaChart unless the user explicitly names that chart type.** If a user asks for "a chart" or "data visualisation" without specifying a type, always use `BarChart` — do not infer chart type from context or data shape.
 
-| Chart Type  | Rule                                                              |
-| ----------- | ----------------------------------------------------------------- |
-| `BarChart`  | **Always use this — the only approved default**                   |
-| `LineChart` | Only if user explicitly says "line chart" — then ask to confirm   |
-| `PieChart`  | Only if user explicitly says "pie chart" — then ask to confirm    |
-| `AreaChart` | Only if user explicitly says "area chart" — then ask to confirm   |
+| Chart Type  | Rule                                                            |
+| ----------- | --------------------------------------------------------------- |
+| `BarChart`  | **Always use this — the only approved default**                 |
+| `LineChart` | Only if user explicitly says "line chart" — then ask to confirm |
+| `PieChart`  | Only if user explicitly says "pie chart" — then ask to confirm  |
+| `AreaChart` | Only if user explicitly says "area chart" — then ask to confirm |
 
 When a user does explicitly request a different type, ask before proceeding:
+
 > "Our design system only uses bar charts for consistency. Are you sure you want a [type] chart instead?"
 
 **Grouped Bar Charts: NEVER more than 2 Values Per Group**
@@ -202,7 +204,58 @@ import { ResponsiveContainer } from "recharts";
 </ResponsiveContainer>
 ```
 
-### 8. Styling Guidelines
+### 8. Written Content (STRICT)
+
+All UI copy must follow these content standards:
+
+**Sentence case (default):**
+
+- Use sentence case for all UI text — titles, headings, labels, descriptions
+- Only capitalise the first letter and proper nouns (product names, branded terms)
+- All caps only for acronyms (CSV, PDF) — never for emphasis
+- Do: "Edit your contact information" / Don't: "Edit Your Contact Information"
+
+**Plain language:**
+
+- Use simple, everyday words — avoid jargon and formal language
+- Prefer: "buy" not "purchase", "help" not "assist", "to" not "in order to"
+- If you must use a technical term, explain it on first use
+
+**Active voice:**
+
+- Use active voice most of the time: "Categorise your transactions" not "Your transactions can be categorised"
+- Use passive voice sparingly — mainly to soften bad news or for brief confirmations
+
+**Contractions:**
+
+- Use everyday contractions: "you'll", "we're", "don't", "it's"
+- Don't turn nouns into contractions: "Your account has been locked" not "Your account's been locked"
+
+**Pronouns:**
+
+- Refer to the product as "we"/"our"/"us" in product UI; use the product name in marketing copy
+- Refer to customers as "you"/"your"
+- On headings, buttons, and links, drop "you"/"your": "Invoices" not "Your invoices"
+
+**Buttons and links:**
+
+- Sentence case, no full stop
+- Make link text meaningful — avoid "Learn more" or "Click here"
+- Put links at the end of sentences, not mid-sentence
+
+**Formatting:**
+
+- Bold only to reference a UI element (e.g. "select **Continue**") — never for emphasis
+- Never use italics. Never underline text unless it's a link
+
+**Tone:**
+
+- Default is **practical** — clear, concise, helpful
+- **Formal** only for legal info or serious moments
+- **Expressive** for celebratory moments. **Playful** only in rare marketing moments
+- If in doubt, keep it simple
+
+### 9. Styling Guidelines
 
 **Typography**: Use Tailwind utilities (`text-sm`, `text-base`, `font-medium`, etc.)
 **Spacing**: Use Tailwind scale (`p-4`, `m-2`, `gap-4`, etc.)

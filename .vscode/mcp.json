@@ -1,4 +1,12 @@
 {
+  "inputs": [
+    {
+      "id": "atlassian-token",
+      "type": "promptString",
+      "description": "Atlassian API Token",
+      "password": true
+    }
+  ],
   "servers": {
     "atlassian-mcp-server": {
       "type": "http",
@@ -7,13 +15,5 @@
         "Authorization": "Bearer ${input:atlassian-token}"
       }
     }
-  },
-  "inputs": [
-    {
-      "id": "atlassian-token",
-      "type": "promptString",
-      "description": "Atlassian API Token",
-      "password": true
-    }
-  ]
+  }
 }

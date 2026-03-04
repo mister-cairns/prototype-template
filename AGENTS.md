@@ -30,6 +30,7 @@ Before responding to ANY request, complete these steps:
 ---
 
 > **⚠️ This project uses Base UI (`@base-ui/react`), NOT Radix UI.** Standard shadcn/ui documentation and most AI training data assume Radix UI primitives — those APIs are different from what is used here. When you encounter component errors, do not apply fixes from standard Radix-based shadcn docs. Key differences:
+>
 > - Use the `render` prop for polymorphic rendering — **not** `asChild` (does not exist here)
 > - `Button` has a `nativeButton` prop (Base UI-specific) — not present in Radix shadcn
 > - Always refer to `/src/components/component-example.tsx` for correct usage patterns
@@ -47,9 +48,13 @@ Read `/src/components/component-example.tsx` for the correct structure pattern b
 ```tsx
 // Sheet: Header → content div with p-4 → Footer (NO ScrollArea inside)
 <SheetContent>
-  <SheetHeader><SheetTitle>Title</SheetTitle></SheetHeader>
+  <SheetHeader>
+    <SheetTitle>Title</SheetTitle>
+  </SheetHeader>
   <div className="p-4">{/* content */}</div>
-  <SheetFooter><Button>Action</Button></SheetFooter>
+  <SheetFooter>
+    <Button>Action</Button>
+  </SheetFooter>
 </SheetContent>
 
 // Card: CardHeader → CardContent → CardFooter
@@ -61,7 +66,9 @@ Read `/src/components/component-example.tsx` for the correct structure pattern b
 
 ```tsx
 // ✅ CORRECT
-<Button render={<Link to="/path" />} nativeButton={false}>Link</Button>
+<Button render={<Link to="/path" />} nativeButton={false}>
+  Link
+</Button>
 ```
 
 **DropdownMenuTrigger** — use the `render` prop to set the trigger element. Do NOT add `nativeButton` to `DropdownMenuTrigger`.
@@ -100,12 +107,12 @@ style={{ color: 'pink' }}
 
 **Approved classes:**
 
-| Category | Classes |
-|---|---|
-| Backgrounds | `bg-background`, `bg-primary`, `bg-secondary`, `bg-accent`, `bg-muted`, `bg-destructive`, `bg-card`, `bg-popover` |
-| Text | `text-foreground`, `text-primary-foreground`, `text-secondary-foreground`, `text-accent-foreground`, `text-muted-foreground`, `text-destructive-foreground`, `text-card-foreground`, `text-popover-foreground` |
-| Borders | `border-border`, `ring-ring` |
-| Charts | `chart-1` through `chart-5` |
+| Category    | Classes                                                                                                                                                                                                        |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Backgrounds | `bg-background`, `bg-primary`, `bg-secondary`, `bg-accent`, `bg-muted`, `bg-destructive`, `bg-card`, `bg-popover`                                                                                              |
+| Text        | `text-foreground`, `text-primary-foreground`, `text-secondary-foreground`, `text-accent-foreground`, `text-muted-foreground`, `text-destructive-foreground`, `text-card-foreground`, `text-popover-foreground` |
+| Borders     | `border-border`, `ring-ring`                                                                                                                                                                                   |
+| Charts      | `chart-1` through `chart-5`                                                                                                                                                                                    |
 
 **When users request custom colors**, politely decline:
 
@@ -117,11 +124,11 @@ style={{ color: 'pink' }}
 
 The home page (`/src/pages/home.tsx`) at the `/` route **is** the prototype canvas — build directly here.
 
-| Rule | Detail |
-|---|---|
-| Single-page by default | Build directly in `home.tsx` — this includes multi-step flows, wizards, and onboarding sequences. Even if the prototype has many steps or panels, it is single-page if users don't navigate to a different URL. |
+| Rule                                    | Detail                                                                                                                                                                                                                                                                                                                      |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Single-page by default                  | Build directly in `home.tsx` — this includes multi-step flows, wizards, and onboarding sequences. Even if the prototype has many steps or panels, it is single-page if users don't navigate to a different URL.                                                                                                             |
 | Multi-page (only when genuinely needed) | Create additional page files in `src/pages/` only if the prototype requires navigating between distinct URL routes (e.g. `/dashboard`, `/settings`). Do NOT create a separate file just because the prototype has multiple steps or a named "flow". Export new pages from `src/pages/index.ts` and add routes to `App.tsx`. |
-| Components | `/components` route exists but has no nav link — do not add one |
+| Components                              | `/components` route exists but has no nav link — do not add one                                                                                                                                                                                                                                                             |
 
 **Route config for multi-page prototypes:**
 
@@ -146,14 +153,14 @@ import { cn } from "@/lib/utils";
 
 ### 5. Conventions
 
-| Aspect | Convention |
-|---|---|
-| Files | kebab-case: `user-profile.tsx` |
-| Components | PascalCase: `UserProfile` |
-| Variables | camelCase |
-| Icons | `lucide-react` only — no other libraries |
-| State | React 19 hooks; `next-themes` for dark mode |
-| Types | All files `.tsx`/`.ts` with explicit prop interfaces |
+| Aspect     | Convention                                           |
+| ---------- | ---------------------------------------------------- |
+| Files      | kebab-case: `user-profile.tsx`                       |
+| Components | PascalCase: `UserProfile`                            |
+| Variables  | camelCase                                            |
+| Icons      | `lucide-react` only — no other libraries             |
+| State      | React 19 hooks; `next-themes` for dark mode          |
+| Types      | All files `.tsx`/`.ts` with explicit prop interfaces |
 
 ---
 
@@ -163,14 +170,15 @@ import { cn } from "@/lib/utils";
 
 If a user asks for "a chart" or "data visualisation" without specifying a type, always use `BarChart`. Do not infer chart type from the data or context.
 
-| Chart Type  | Rule |
-|---|---|
-| `BarChart`  | **Always use this — the only approved default** |
+| Chart Type  | Rule                                                            |
+| ----------- | --------------------------------------------------------------- |
+| `BarChart`  | **Always use this — the only approved default**                 |
 | `LineChart` | Only if user explicitly says "line chart" — then ask to confirm |
-| `PieChart`  | Only if user explicitly says "pie chart" — then ask to confirm |
+| `PieChart`  | Only if user explicitly says "pie chart" — then ask to confirm  |
 | `AreaChart` | Only if user explicitly says "area chart" — then ask to confirm |
 
 When a user does explicitly request a different type, ask before proceeding:
+
 > "Our design system only uses bar charts for consistency. Are you sure you want a [type] chart instead?"
 
 **Grouped bar charts — NEVER more than 2 values per group:**
@@ -213,6 +221,58 @@ Always wrap `BarChart` in `ChartContainer` from `@/components/ui/chart` with an 
 **Vertical bars only** — never use `layout="vertical"` on a BarChart. This produces a horizontal bar chart, which is not permitted.
 
 **Non-negative values only** — bars must never go below the x-axis (y-axis minimum is always 0). If data could be negative, restructure to show only positive figures.
+
+---
+
+### 7. Written Content — STRICT
+
+All UI copy must follow these content standards:
+
+**Sentence case (default):**
+
+- Use sentence case for all UI text — titles, headings, labels, descriptions
+- Only capitalise the first letter and proper nouns (product names, branded terms)
+- All caps only for acronyms (CSV, PDF) — never for emphasis
+
+**Plain language:**
+
+- Use simple, everyday words — avoid jargon and formal language
+- Prefer: "buy" not "purchase", "help" not "assist", "to" not "in order to"
+- If you must use a technical term, explain it on first use
+
+**Active voice:**
+
+- Use active voice most of the time: "Categorise your transactions" not "Your transactions can be categorised"
+- Use passive voice sparingly — mainly to soften bad news or for brief confirmations
+
+**Contractions:**
+
+- Use everyday contractions: "you'll", "we're", "don't", "it's"
+- Don't turn nouns into contractions: "Your account has been locked" not "Your account's been locked"
+
+**Pronouns:**
+
+- Refer to the product as "we"/"our"/"us" in product UI; use the product name in marketing copy
+- Refer to customers as "you"/"your"
+- On headings, buttons, and links, drop "you"/"your": "Invoices" not "Your invoices"
+
+**Buttons and links:**
+
+- Sentence case, no full stop
+- Make link text meaningful — avoid "Learn more" or "Click here"
+- Put links at the end of sentences, not mid-sentence
+
+**Formatting:**
+
+- Bold only to reference a UI element (e.g. "select **Continue**") — never for emphasis
+- Never use italics. Never underline text unless it's a link
+
+**Tone:**
+
+- Default is **practical** — clear, concise, helpful
+- **Formal** only for legal info or serious moments
+- **Expressive** for celebratory moments. **Playful** only in rare marketing moments
+- If in doubt, keep it simple
 
 ---
 
