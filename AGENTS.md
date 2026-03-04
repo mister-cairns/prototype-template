@@ -164,34 +164,16 @@ import { cn } from "@/lib/utils";
 
 ---
 
-### 6. Charts — Bar Charts Only
+### 6. Charts
 
-**ONLY use `BarChart`. Never use PieChart, LineChart, or AreaChart unless the user explicitly names that chart type in their request.**
+Use the most appropriate chart type for the data and context. All chart types from recharts are available.
 
-If a user asks for "a chart" or "data visualisation" without specifying a type, always use `BarChart`. Do not infer chart type from the data or context.
-
-| Chart Type  | Rule                                                            |
-| ----------- | --------------------------------------------------------------- |
-| `BarChart`  | **Always use this — the only approved default**                 |
-| `LineChart` | Only if user explicitly says "line chart" — then ask to confirm |
-| `PieChart`  | Only if user explicitly says "pie chart" — then ask to confirm  |
-| `AreaChart` | Only if user explicitly says "area chart" — then ask to confirm |
-
-When a user does explicitly request a different type, ask before proceeding:
-
-> "Our design system only uses bar charts for consistency. Are you sure you want a [type] chart instead?"
-
-**Grouped bar charts — NEVER more than 2 values per group:**
-
-```tsx
-// ✅ CORRECT — 2 values per group max
-{ month: "Jan", cashIn: 85000, cashOut: 78000 }
-
-// ❌ WRONG — 3 values per group is not allowed
-{ month: "Jan", cashIn: 85000, cashOut: 78000, pending: 12000 }
-```
-
-If more than 2 values are needed: split into multiple charts, use a stacked bar, or prioritise the two most important metrics.
+| Chart Type  | Best for                                          |
+|---|---|
+| `BarChart`  | Comparing values across categories                |
+| `LineChart` | Trends over time                                  |
+| `AreaChart` | Trends with volume/magnitude emphasis             |
+| `PieChart`  | Part-to-whole relationships (use sparingly)       |
 
 **Stacked bar charts — radius on topmost bar only:**
 
@@ -202,7 +184,7 @@ If more than 2 values are needed: split into multiple charts, use a stacked bar,
 
 **Chart container — always use `ChartContainer`:**
 
-Always wrap `BarChart` in `ChartContainer` from `@/components/ui/chart` with an explicit pixel height. Never use raw `ResponsiveContainer` — `ChartContainer` handles this internally.
+Always wrap charts in `ChartContainer` from `@/components/ui/chart` with an explicit pixel height. Never use raw `ResponsiveContainer` — `ChartContainer` handles this internally.
 
 ```tsx
 // ✅ CORRECT
@@ -217,10 +199,6 @@ Always wrap `BarChart` in `ChartContainer` from `@/components/ui/chart` with an 
   <BarChart data={data}>...</BarChart>
 </ResponsiveContainer>
 ```
-
-**Vertical bars only** — never use `layout="vertical"` on a BarChart. This produces a horizontal bar chart, which is not permitted.
-
-**Non-negative values only** — bars must never go below the x-axis (y-axis minimum is always 0). If data could be negative, restructure to show only positive figures.
 
 ---
 

@@ -145,35 +145,16 @@ Only `lucide-react` icons (563 available):
 import { Check, ChevronDown, User } from "lucide-react";
 ```
 
-### 7. Charts (STRICT: Bar Charts Only)
+### 7. Charts
 
-**ONLY use `BarChart` for all data visualizations. Never use other chart types without explicit user request.**
+Use the most appropriate chart type for the data and context. All chart types from recharts are available.
 
-When creating charts:
-
-- **Always use `BarChart`** — this is the only approved chart type
-- **Bars must always be vertical. Never use `layout="vertical"` on a BarChart** — this produces a horizontal bar chart, which is not permitted
-- **All chart data must use non-negative values only.** Bars must never go below the x-axis (y-axis minimum is always 0). If data could be negative, restructure it to show only positive figures (e.g. use absolute values, or separate positive and negative into distinct charts)
-- **Never use PieChart, LineChart, or AreaChart unless the user explicitly names that chart type.** If a user asks for "a chart" or "data visualisation" without specifying a type, always use `BarChart` — do not infer chart type from context or data shape.
-
-| Chart Type  | Rule                                                            |
-| ----------- | --------------------------------------------------------------- |
-| `BarChart`  | **Always use this — the only approved default**                 |
-| `LineChart` | Only if user explicitly says "line chart" — then ask to confirm |
-| `PieChart`  | Only if user explicitly says "pie chart" — then ask to confirm  |
-| `AreaChart` | Only if user explicitly says "area chart" — then ask to confirm |
-
-When a user does explicitly request a different type, ask before proceeding:
-
-> "Our design system only uses bar charts for consistency. Are you sure you want a [type] chart instead?"
-
-**Grouped Bar Charts: NEVER more than 2 Values Per Group**
-
-**NEVER create a grouped bar chart with more than 2 values per group.** If more are needed:
-
-- Split into multiple charts
-- Use a stacked bar chart instead
-- Prioritize the two most important metrics
+| Chart Type  | Best for                                          |
+| ----------- | ------------------------------------------------- |
+| `BarChart`  | Comparing values across categories                |
+| `LineChart` | Trends over time                                  |
+| `AreaChart` | Trends with volume/magnitude emphasis             |
+| `PieChart`  | Part-to-whole relationships (use sparingly)       |
 
 **Stacked Bar Charts: Radius on Top Bar Only**
 
@@ -185,7 +166,7 @@ When a user does explicitly request a different type, ask before proceeding:
 
 **Chart Container: Always Use `ChartContainer`**
 
-Always wrap `BarChart` in `ChartContainer` from `@/components/ui/chart` with an explicit pixel height. Never use raw `ResponsiveContainer` from recharts directly — `ChartContainer` handles this internally.
+Always wrap charts in `ChartContainer` from `@/components/ui/chart` with an explicit pixel height. Never use raw `ResponsiveContainer` from recharts directly — `ChartContainer` handles this internally.
 
 ```typescript
 // ✅ CORRECT
