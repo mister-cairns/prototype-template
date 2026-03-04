@@ -261,30 +261,16 @@ import { cn } from "@/lib/utils";
 
 ---
 
-## 7. Charts — STRICT: Bar Charts Only
+## 7. Charts
 
-**ONLY use `BarChart` for all data visualizations. Never use other chart types without explicit user request.**
+Use the most appropriate chart type for the data and context. All chart types from recharts are available.
 
-- **Always use `BarChart`** — this is the only approved chart type
-- **Bars must always be vertical. Never use `layout="vertical"` on a BarChart** — this produces a horizontal bar chart, which is not permitted
-- **All chart data must use non-negative values only.** Bars must never go below the x-axis (y-axis minimum is always 0). If data could be negative, restructure it to show only positive figures (e.g. use absolute values, or separate positive and negative into distinct charts)
-- **Never use PieChart, LineChart, or AreaChart unless the user explicitly names that chart type.** If a user asks for "a chart" or "data visualisation" without specifying a type, always use `BarChart` — do not infer chart type from context or data shape. Only if the user explicitly names a type, ask before proceeding:
-  > "Our design system only uses bar charts for consistency. Are you sure you want a [line/pie/area] chart instead?"
-
-| Chart Type  | Usage                                        |
-| ----------- | -------------------------------------------- |
-| `BarChart`  | **ONLY approved type** — use for all charts  |
-| `LineChart` | Only when explicitly requested and confirmed |
-| `PieChart`  | Only when explicitly requested and confirmed |
-| `AreaChart` | Only when explicitly requested and confirmed |
-
-### Grouped Bar Charts: NEVER More Than 2 Values Per Group
-
-**NEVER create a grouped bar chart with more than 2 values per group.** This is a hard limit. If more are needed:
-
-- Split into multiple charts
-- Use a stacked bar chart instead
-- Prioritize the two most important metrics
+| Chart Type  | Best for                                          |
+| ----------- | ------------------------------------------------- |
+| `BarChart`  | Comparing values across categories                |
+| `LineChart` | Trends over time                                  |
+| `AreaChart` | Trends with volume/magnitude emphasis             |
+| `PieChart`  | Part-to-whole relationships (use sparingly)       |
 
 ### Stacked Bar Charts: Radius on Top Bar Only
 
@@ -296,7 +282,7 @@ import { cn } from "@/lib/utils";
 
 ### Chart Container: Always Use `ChartContainer`
 
-Always wrap `BarChart` in `ChartContainer` from `@/components/ui/chart` with an explicit pixel height. Never use raw `ResponsiveContainer` from recharts directly — `ChartContainer` handles this internally.
+Always wrap charts in `ChartContainer` from `@/components/ui/chart` with an explicit pixel height. Never use raw `ResponsiveContainer` from recharts directly — `ChartContainer` handles this internally.
 
 ```tsx
 // ✅ CORRECT

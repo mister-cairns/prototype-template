@@ -26,6 +26,7 @@ This skill loads all essential project rules, constraints, and patterns to ensur
 ### Step 1: Read Project Rules
 
 Read the appropriate rules file for your AI tool:
+
 - **Claude Code users**: Read `/CLAUDE.md`
 - **Cursor users**: Read `/.cursorrules`
 - **Other AI tools**: Read both files
@@ -43,6 +44,7 @@ Key takeaway: **Always use existing shadcn components. Only create custom compon
 Read `/src/components/component-example.tsx` to see correct component structure patterns.
 
 Critical patterns to remember:
+
 - **Sheet**: `SheetHeader` → content div with `p-4` → `SheetFooter` (NO ScrollArea)
 - **Card**: `CardHeader` → `CardContent` → `CardFooter`
 - **Dialog**: `DialogHeader` → content → `DialogFooter`
@@ -62,6 +64,7 @@ The home page (`/src/pages/home.tsx`) at the `/` route **is** the prototype canv
 The project uses a **strict, locked color palette** defined in `/src/index.css`.
 
 **Available color classes** (use ONLY these):
+
 - `bg-background`, `text-foreground`
 - `bg-primary`, `text-primary-foreground`
 - `bg-secondary`, `text-secondary-foreground`
@@ -73,6 +76,7 @@ The project uses a **strict, locked color palette** defined in `/src/index.css`.
 - `bg-popover`, `text-popover-foreground`
 
 **NEVER use**:
+
 - Hex colors (`#3B82F6`)
 - RGB values (`rgb(59, 130, 246)`)
 - Named colors (`blue`, `red`)
@@ -80,6 +84,19 @@ The project uses a **strict, locked color palette** defined in `/src/index.css`.
 - **NEVER modify `/src/index.css`**
 
 When users request custom colors, politely decline and offer theme alternatives.
+
+### Step 6: Load Written Content Standards
+
+All UI copy and written content must follow these rules (from the Content Design System):
+
+- **Sentence case** for all UI text — titles, headings, labels, descriptions. Only capitalise the first letter and proper nouns.
+- **Plain language** — use simple, everyday words. Avoid jargon and formal language. Prefer "buy" not "purchase", "help" not "assist".
+- **Active voice** most of the time. Use passive voice sparingly — mainly to soften bad news.
+- **Contractions** — use everyday contractions ("you'll", "don't"). Don't turn nouns into contractions.
+- **Pronouns** — use "we"/"our" in product UI, the product name in marketing copy. Use "you"/"your" for customers. Drop "you"/"your" on headings, buttons, and links.
+- **Buttons and links** — sentence case, no full stop. Make link text meaningful. Put links at end of sentences.
+- **Bold** only to reference UI elements. Never use italics. Never underline unless it's a link.
+- **Tone** — default is practical (clear, concise, helpful). Formal for legal. Expressive for celebrations. Playful only rarely.
 
 ## Output Format
 
@@ -92,6 +109,7 @@ After completing these steps, confirm you've loaded the rules by outputting:
 - Reviewed component structure patterns
 - Confirmed prototype structure (starts in home.tsx)
 - Loaded strict color system (CSS variables only)
+- Loaded written content standards (sentence case, plain language, active voice)
 
 Ready to assist with prototyping.
 ```
@@ -105,11 +123,13 @@ Ready to assist with prototyping.
 5. **Imports**: Always use `@/components/ui/*` alias
 6. **TypeScript**: All files must be `.tsx` or `.ts`
 7. **Icons**: Only `lucide-react` icons
-8. **Charts**: ONLY use `BarChart` by default. Never use PieChart, LineChart, or AreaChart unless the user explicitly names that chart type. Bars must always be vertical — never use `layout="vertical"` on a BarChart. Never create grouped bar charts with more than 2 values per group. All chart data must use non-negative values only (y-axis minimum is always 0). Always wrap `BarChart` in `ChartContainer` from `@/components/ui/chart` with an explicit pixel height (e.g. `className="h-[300px] w-full"`) — never use raw `ResponsiveContainer`.
+8. **Written content**: Sentence case, plain language, active voice, contractions, practical tone
+9. **Charts**: Use the most appropriate chart type for the data — BarChart, LineChart, AreaChart, and PieChart are all available. Always wrap charts in `ChartContainer` from `@/components/ui/chart` with an explicit pixel height (e.g. `className="h-[300px] w-full"`) — never use raw `ResponsiveContainer`. For stacked bar charts, apply radius to the topmost bar only.
 
 ## When to Re-invoke This Skill
 
 Invoke this skill again if:
+
 - You've forgotten key constraints
 - The user asks you to "reload the rules"
 - You need to confirm the design system requirements
