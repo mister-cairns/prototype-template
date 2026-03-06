@@ -349,7 +349,7 @@ The `initialize-project` skill loads these automatically, but you can reference:
 - `/.cursorrules` - Detailed project rules (Cursor)
 - `/src/index.css` - Theme color definitions
 - `/src/components/component-example.tsx` - Component patterns
-- `/.agentskills/` - Agent Skills definitions
+- `/.claude/skills/` - Agent Skills definitions
 
 ## Remember
 
