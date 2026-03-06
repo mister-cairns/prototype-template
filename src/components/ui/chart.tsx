@@ -255,7 +255,7 @@ function ChartTooltipContent({
                         </span>
                       </div>
                       {item.value && (
-                        <span className="text-foreground tabular-nums">
+                        <span className="text-foreground">
                           {item.value.toLocaleString()}
                         </span>
                       )}
