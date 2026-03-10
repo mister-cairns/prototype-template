@@ -253,7 +253,45 @@ import { ResponsiveContainer } from "recharts";
 </ResponsiveContainer>
 ```
 
-### 8. STATE MANAGEMENT
+### 8. WRITTEN CONTENT - STRICT
+
+All UI copy must follow these content standards:
+
+Write in plain language. Use simple, everyday words: "buy" not "purchase", "help" not "assist", "about" not "approximately", "to" not "in order to", "didn't" not "failed to". Avoid jargon.
+
+Use a practical tone by default. Be formal for legal and security content. Be expressive only for genuine celebratory moments. Never be playful in errors or business-critical UI. Never trivialise or gamify: no "Cha-ching!", "Achievement unlocked!", or similar.
+
+Use active voice: "Categorise your transactions", not "Your transactions can be categorised".
+
+Always use contractions: "you're", "we'll", "can't". Never expand them. Don't contract nouns: "Your account has been locked" not "Your account's been locked".
+
+Use sentence case everywhere: headings, buttons, labels, features. Title case only for proper nouns and branded terms (Xero App Store, Grow plan). All caps only for acronyms (ABN, CSV).
+
+Refer to Xero as we/our/us in product UI. Refer to the customer as you/your in body copy. On headings, buttons, and links, drop "you/your" entirely: "View cash flow" not "View your cash flow". Use they/them for third parties.
+
+Use "please" only when asking someone to do something requiring significant effort. Use "sorry" only for errors that cause major interruption or data loss. Neither should appear in routine UI.
+
+Use "select" not "click" or "tap".
+
+Don't use emoji, semicolons, em dashes, or exclamation marks in practical UI. Exclamation marks are acceptable only in genuinely celebratory moments.
+
+Don't use full stops at the end of single sentences or sentence fragments. Use them when there are two or more sentences. Don't add full stops to standalone links.
+
+Use the Oxford comma in lists of 3 or more items.
+
+Write all numbers as numerals: "5 items" not "five items". Use commas to separate groups of 3 digits: 4,000,000. Carry decimals to 2 places: 1,133.76. Use decimals instead of fractions, always with a leading zero: 0.75 not .75.
+
+Never show a currency symbol (no $, £, € etc.): write "27.99" not "$27.99". For negative amounts, use a minus symbol not parentheses: "-50.42" not "(50.42)".
+
+For dates, use DD Month YYYY outside the US ("8 Aug 2025") and Month DD, YYYY in the US ("Aug 8, 2025"). Don't lead with a zero. Don't use ordinal suffixes: "1 Sep" not "1st Sep". Don't shorten years. In constrained space, shorten months and days to 3 characters: Jun, Mon. Use "to" between dates in a range where space allows; use an en dash (–) with spaces in constrained contexts. Don't repeat the month or year in a range: "12–15 Aug" not "12 Aug–15 Aug".
+
+For time, use a 12-hour clock with a space before am/pm and no punctuation: "10:05 am" not "10:05am" or "14:00". Don't lead with a zero: "2:32 pm" not "02:32 pm". For ranges, use an en dash with spaces and write am/pm once at the end: "6:00–11:00 am". Show time zones only when spanning multiple zones: "9:00 am AEST".
+
+For error messages, cover: what happened, why it happened (only if helpful), and how to fix it. Don't apologise for minor errors. Never blame the user.
+
+For empty states, include a clear header, a brief body only if needed, and a CTA. Use an encouraging tone. Never shame or blame.
+
+### 9. STATE MANAGEMENT
 
 - Use React 19 hooks (`useState`, `useEffect`, `useReducer`)
 - For theme toggling, use `next-themes` (already installed)

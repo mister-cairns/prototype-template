@@ -206,51 +206,40 @@ Always wrap charts in `ChartContainer` from `@/components/ui/chart` with an expl
 
 All UI copy must follow these content standards:
 
-**Sentence case (default):**
+Write in plain language. Use simple, everyday words: "buy" not "purchase", "help" not "assist", "about" not "approximately", "to" not "in order to", "didn't" not "failed to". Avoid jargon.
 
-- Use sentence case for all UI text — titles, headings, labels, descriptions
-- Only capitalise the first letter and proper nouns (product names, branded terms)
-- All caps only for acronyms (CSV, PDF) — never for emphasis
+Use a practical tone by default. Be formal for legal and security content. Be expressive only for genuine celebratory moments. Never be playful in errors or business-critical UI. Never trivialise or gamify: no "Cha-ching!", "Achievement unlocked!", or similar.
 
-**Plain language:**
+Use active voice: "Categorise your transactions", not "Your transactions can be categorised".
 
-- Use simple, everyday words — avoid jargon and formal language
-- Prefer: "buy" not "purchase", "help" not "assist", "to" not "in order to"
-- If you must use a technical term, explain it on first use
+Always use contractions: "you're", "we'll", "can't". Never expand them. Don't contract nouns: "Your account has been locked" not "Your account's been locked".
 
-**Active voice:**
+Use sentence case everywhere: headings, buttons, labels, features. Title case only for proper nouns and branded terms (Xero App Store, Grow plan). All caps only for acronyms (ABN, CSV).
 
-- Use active voice most of the time: "Categorise your transactions" not "Your transactions can be categorised"
-- Use passive voice sparingly — mainly to soften bad news or for brief confirmations
+Refer to Xero as we/our/us in product UI. Refer to the customer as you/your in body copy. On headings, buttons, and links, drop "you/your" entirely: "View cash flow" not "View your cash flow". Use they/them for third parties.
 
-**Contractions:**
+Use "please" only when asking someone to do something requiring significant effort. Use "sorry" only for errors that cause major interruption or data loss. Neither should appear in routine UI.
 
-- Use everyday contractions: "you'll", "we're", "don't", "it's"
-- Don't turn nouns into contractions: "Your account has been locked" not "Your account's been locked"
+Use "select" not "click" or "tap".
 
-**Pronouns:**
+Don't use emoji, semicolons, em dashes, or exclamation marks in practical UI. Exclamation marks are acceptable only in genuinely celebratory moments.
 
-- Refer to the product as "we"/"our"/"us" in product UI; use the product name in marketing copy
-- Refer to customers as "you"/"your"
-- On headings, buttons, and links, drop "you"/"your": "Invoices" not "Your invoices"
+Don't use full stops at the end of single sentences or sentence fragments. Use them when there are two or more sentences. Don't add full stops to standalone links.
 
-**Buttons and links:**
+Use the Oxford comma in lists of 3 or more items.
 
-- Sentence case, no full stop
-- Make link text meaningful — avoid "Learn more" or "Click here"
-- Put links at the end of sentences, not mid-sentence
+Write all numbers as numerals: "5 items" not "five items". Use commas to separate groups of 3 digits: 4,000,000. Carry decimals to 2 places: 1,133.76. Use decimals instead of fractions, always with a leading zero: 0.75 not .75.
 
-**Formatting:**
+Never show a currency symbol (no $, £, € etc.): write "27.99" not "$27.99". For negative amounts, use a minus symbol not parentheses: "-50.42" not "(50.42)".
 
-- Bold only to reference a UI element (e.g. "select **Continue**") — never for emphasis
-- Never use italics. Never underline text unless it's a link
+For dates, use DD Month YYYY outside the US ("8 Aug 2025") and Month DD, YYYY in the US ("Aug 8, 2025"). Don't lead with a zero. Don't use ordinal suffixes: "1 Sep" not "1st Sep". Don't shorten years. In constrained space, shorten months and days to 3 characters: Jun, Mon. Use "to" between dates in a range where space allows; use an en dash (–) with spaces in constrained contexts. Don't repeat the month or year in a range: "12–15 Aug" not "12 Aug–15 Aug".
 
-**Tone:**
+For time, use a 12-hour clock with a space before am/pm and no punctuation: "10:05 am" not "10:05am" or "14:00". Don't lead with a zero: "2:32 pm" not "02:32 pm". For ranges, use an en dash with spaces and write am/pm once at the end: "6:00–11:00 am". Show time zones only when spanning multiple zones: "9:00 am AEST".
 
-- Default is **practical** — clear, concise, helpful
-- **Formal** only for legal info or serious moments
-- **Expressive** for celebratory moments. **Playful** only in rare marketing moments
-- If in doubt, keep it simple
+For error messages, cover: what happened, why it happened (only if helpful), and how to fix it. Don't apologise for minor errors. Never blame the user.
+
+For empty states, include a clear header, a brief body only if needed, and a CTA. Use an encouraging tone. Never shame or blame.
+
 
 ---
 
